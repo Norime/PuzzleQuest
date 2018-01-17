@@ -12,6 +12,7 @@ val = 0
 liste=[]
 liste2=[]
 listeVar= []
+joueur = 1
 
 def grilleBase(n):
     global liste
@@ -44,10 +45,23 @@ def affiche(grille):
         print()
 '''
 affiche(grilleBase(6))
+
+
+def joueur():
+    global joueur
+    if joueur == 1:
+        joueur = 2
+        print("\n Tour du joueur 2 \n")        
+    elif joueur == 2:
+        joueur = 1
+        print("\n Tour du joueur 1 \n")
+
 def selection(grille):
     global listeVar
+    global joueur
     x=0
     select= ""
+    print(joueur)
     while len(listeVar)<=35 and select != ("q" or "Q"):
         if len(listeVar) > 2:
             affiche(liste)
@@ -57,7 +71,10 @@ def selection(grille):
                     for y in range(len(grille)):
                         if liste[x][y] == 0:
                             liste[x][y] = random.randint(1,4)
-                return affiche(liste)
+                affiche(liste)
+                joueur()
+                print(joueur)
+                
         if len(listeVar)==0:    
             x = int(input("Selectionnez coordonné horizontal à supprimer: "))
             y = int(input("Selectionnez coordonné vertical à supprimer: "))
@@ -90,7 +107,7 @@ def selection(grille):
                     else:
                         print("Ordonné trop éloigné")
                 else:
-                    print("Absyce trop éloigné")
+                    print("Abscisse trop éloigné")
             else:
                 print("la case selectionné n'est pas = a la premiere")
     affiche(liste)
