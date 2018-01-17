@@ -43,17 +43,59 @@ def affiche(grille):
             print(str(grille2[x][y])," ",end="")
         print()
 '''
-
+affiche(grilleBase(6))
 def selection(grille):
     global listeVar
     x=0
-    while len(listeVar)<=2:
-        x = int(input("Selectionnez la 1ere case à supprimer: "))
-        y = int(input("Selectionnez la 2eme case à supprimer: "))
-        print("\n")
-        z =  liste[x][y]
-        listeVar += [z,]
-        liste[x][y] = 0
-        liste[x][y] = int(random.randint(1,4))   
+    select= ""
+    while len(listeVar)<=35 and select != ("q" or "Q"):
+        if len(listeVar) > 2:
+            affiche(liste)
+            select = input("Entrez q pour quitter et c pour continuer")
+            if select == "q":
+                for x in range(len(grille)):
+                    for y in range(len(grille)):
+                        if liste[x][y] == 0:
+                            liste[x][y] = random.randint(1,4)
+                return affiche(liste)
+        if len(listeVar)==0:    
+            x = int(input("Selectionnez coordonné horizontal à supprimer: "))
+            y = int(input("Selectionnez coordonné vertical à supprimer: "))
+            print("\n")
+            z =  liste[x][y]
+            listeVar += [z,]
+            liste[x][y] = 0
+            ##liste[x][y] = int(random.randint(1,4))  
+        affiche(liste)
+        print(listeVar)
+        if len(listeVar)<=36:
+            a = int(input("Selectionnez coordonné horizontal à supprimer: "))
+            b = int(input("Selectionnez coordonné vertical à supprimer: "))
+            print("\n")
+            c =  liste[a][b]
+            if c==z:
+                if a==x or (a-1)==x or (a+1)==x:
+                    if b==y or (b-1)==y or (b+1)==y:
+                        if a==x and b==y:
+                            print("vous ne pouvez pas selectionné la même case")
+                        else:
+                            x=a
+                            y=b
+                            z =  liste[x][y]
+                            listeVar += [z,]
+                            liste[x][y] = 0
+                            ##liste[x][y] = int(random.randint(1,4))  
+                            #affiche(liste)
+                            print(listeVar)
+                    else:
+                        print("Ordonné trop éloigné")
+                else:
+                    print("Absyce trop éloigné")
+            else:
+                print("la case selectionné n'est pas = a la premiere")
     affiche(liste)
-    print(listeVar)
+
+
+
+    
+selection(liste)
