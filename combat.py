@@ -74,6 +74,8 @@ def selection(grille):
                 affiche(liste)
                 joueur()
                 print(joueur)
+                listeVar.clear()
+                select = ""
                 
         if len(listeVar)==0:    
             x = int(input("Selectionnez coordonné horizontal à supprimer: "))
