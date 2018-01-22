@@ -112,7 +112,24 @@ def selection(grille):
                 print("la case selectionné n'est pas = a la premiere")
     affiche(liste)
 
+'''
+def elements(grille,damage,element,element2):
+    if element == eau:
+        if element2== feu:
+            degats == damage*1.5
+        elif element2== plante:
+            degats == damage//1.5
+    elif element == feu:
+        if element2== eau:
+            degats == damage//1.5
+        elif element2== plante:
+            degats == damage*1.5
+    elif element == plante:
+        if element2== eau:
+            degats == damage*1.5
+        elif element2== feu:
+            degats == damage//1.5
 
-
+'''
     
 selection(liste)
