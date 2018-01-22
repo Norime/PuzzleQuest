@@ -47,21 +47,19 @@ def affiche(grille):
 affiche(grilleBase(6))
 
 
-def joueur():
+def joueurs():
     global joueur
     if joueur == 1:
-        joueur = 2
-        print("\n Tour du joueur 2 \n")        
+        joueur = 2      
     elif joueur == 2:
         joueur = 1
-        print("\n Tour du joueur 1 \n")
 
 def selection(grille):
     global listeVar
     global joueur
     x=0
     select= ""
-    print(joueur)
+    print("\n Tour du joueur",joueur,"\n")
     while len(listeVar)<=35 and select != ("q" or "Q"):
         if len(listeVar) > 2:
             affiche(liste)
@@ -72,8 +70,8 @@ def selection(grille):
                         if liste[x][y] == 0:
                             liste[x][y] = random.randint(1,4)
                 affiche(liste)
-                joueur()
-                print(joueur)
+                joueurs()
+                print("\n Tour du joueur",joueur,"\n")
                 listeVar.clear()
                 select = ""
                 
