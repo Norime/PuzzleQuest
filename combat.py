@@ -150,9 +150,9 @@ def joueurIAeasy(grille):
                 if len(listeVar)==res:
                     z =  grille[x][y]
                     listeVar += [z,]
-                    if grille[x+1]==grille[x] or grille[x-1]==grille[x]:
+                    if grille[x+1][y]==grille[x][y] or grille[x-1][y]==grille[x][y]:
                         print("ouais ça marche")
-                    elif grille[y+1]==grille[y] or grille[y-1]==grille[y]:
+                    elif grille[x][y+1]==grille[x][y] or grille[x][y-1]==grille[x][y]:
                         print("ouais ça marche")
                     else:
                         print("456123")
