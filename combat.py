@@ -22,7 +22,7 @@ def grilleBase(n):
     global liste2
     for x in range(n):
         for y in range(n):
-            val = int(random.randint(1,4))
+            val = int(random.randint(1,3))
             liste2+=[val,]
         liste+=[liste2,]
         liste2=[]
@@ -114,7 +114,6 @@ def selection(grille):
             z =  grille[x][y]
             listeVar += [z,]
             grille[x][y] = 0
-            ##liste[x][y] = int(random.randint(1,4))  
         affiche(grille)
         print(listeVar)
         if len(listeVar)<=36:
@@ -133,8 +132,6 @@ def selection(grille):
                             z =  grille[x][y]
                             listeVar += [z,]
                             grille[x][y] = 0
-                            ##liste[x][y] = int(random.randint(1,4))  
-                            #affiche(liste)
                             print(listeVar)
                     else:
                         print("Ordonné trop éloigné")
@@ -143,6 +140,28 @@ def selection(grille):
             else:
                 print("la case selectionné n'est pas = a la premiere")
     affiche(grille)
+
+def joueurIAeasy(grille):
+    global listeVar
+    res=0
+    for x in range(len(grille)):
+        for y in range(len(grille)):
+            while len(listeVar)<=2:
+                if len(listeVar)==res:
+                    z =  grille[x][y]
+                    listeVar += [z,]
+                    if grille[x+1]==grille[x] or grille[x-1]==grille[x]:
+                        print("ouais ça marche")
+                    elif grille[y+1]==grille[y] or grille[y-1]==grille[y]:
+                        print("ouais ça marche")
+                    else:
+                        print("456123")
+                    print(listeVar)
+                            
+                    
+                
+        
+
 
 def AttributionElement(joueurs,selection):
     ##print(listeVar)
@@ -262,15 +281,19 @@ def degat(selection,joueur,AttributionElement,Multiplicateur):
             elif len(listeVar)>=3:
                 pdvjoueur2=pdvjoueur2+3
 
-def fin(pdvjoueur1,pdvjoueur2):
+def fin():
     if pdvjoueur1==0:
         print("\n Le joueur 2 a gagné! \n ")
-        return True
+        return False
     if pdvjoueur2==0:
         print("\n Le joueur1 a gagné! \n ")
         return True
 
+def debut():
+    selection(liste)
+
+
 print("l'element du joueur 1 est:",element1)
 print("l'element du joueur 2 est:",element2)             
-selection(liste)
+joueurIAeasy(liste)
 
